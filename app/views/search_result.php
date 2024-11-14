@@ -26,8 +26,6 @@ $total_pages = ceil($total_count / $count); // 総ページ数
 <?php include_once(__DIR__.'/template/header.php'); ?>
 <body class="p-3 mb-2 bg-body-secondary">
     <?php include_once(__DIR__.'/template/nav.html'); ?>
-    <br>
-    <a href="./search.php">検索ページに戻る</a>
     <hr>
     <h1 class="display-2">
         <span style="color: red;">L</span>et's <span style="color: red;">G</span>o <span style="color: red;">R</span>estaurant
@@ -35,18 +33,21 @@ $total_pages = ceil($total_count / $count); // 総ページ数
     <hr><hr>
 
     <h2 class="display-4">検索結果</h2>
-
-    <table class="table table-secondary table-striped" style="width: auto;">
-        <thead>
-            <tr>
-                <th>店舗名</th>
-                <th>ジャンル</th>
-                <th>アクセス</th>
-                <th>サムネイル</th>
-            </tr>
-        </thead>
-        <tbody class="table-group-divider">
-            <?php if (!empty($shops)): ?>
+    <?php if (empty($shops)): ?>
+        <tr>
+            <td colspan="3">レストラン情報が見つかりませんでした。</td>
+        </tr>
+    <?php else: ?>
+        <table class="table table-secondary table-striped" style="width: auto;">
+            <thead>
+                <tr>
+                    <th>店舗名</th>
+                    <th>ジャンル</th>
+                    <th>アクセス</th>
+                    <th>サムネイル</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
                 <?php foreach ($shops as $shop): ?>
                     <tr>
                         <td>
@@ -79,26 +80,23 @@ $total_pages = ceil($total_count / $count); // 総ページ数
                         </td>
                     </tr>
                 <?php endforeach; ?>
-            <?php else: ?>
-                <tr>
-                    <td colspan="3">レストラン情報が見つかりませんでした。</td>
-                </tr>
+            </tbody>
+        </table>
+
+        <!-- ページング -->
+        <div>
+            <?php if ($page > 1): ?>
+                <a href="?page=<?php echo $page - 1; ?>">前のページ</a>
             <?php endif; ?>
-        </tbody>
-    </table>
 
-    <!-- ページング -->
-    <div>
-        <?php if ($page > 1): ?>
-            <a href="?page=<?php echo $page - 1; ?>">前のページ</a>
-        <?php endif; ?>
+            <span>ページ <?php echo $page; ?> / <?php echo $total_pages; ?></span>
 
-        <span>ページ <?php echo $page; ?> / <?php echo $total_pages; ?></span>
+            <?php if ($page < $total_pages): ?>
+                <a href="?page=<?php echo $page + 1; ?>">次のページ</a>
+            <?php endif; ?>
+        </div>
 
-        <?php if ($page < $total_pages): ?>
-            <a href="?page=<?php echo $page + 1; ?>">次のページ</a>
-        <?php endif; ?>
-    </div>
+    <?php endif; ?>
 
     <?php include_once(__DIR__ .'/template/footer.html'); ?>
 </body>
