@@ -1,0 +1,14 @@
+# Dockerfile
+FROM php:8.3-apache
+
+# php.iniファイルをコピー
+# COPY php.ini /usr/local/etc/php/
+
+# apt を最新化し、必要なパッケージをインストール
+RUN apt-get update && apt-get install -y \
+    golang-go \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+# タイムゾーンの変更処理（Asia/Tokyo）
+ENV TZ=Asia/Tokyo

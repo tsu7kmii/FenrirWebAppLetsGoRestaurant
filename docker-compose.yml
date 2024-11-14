@@ -1,0 +1,13 @@
+services:
+  # php コンテナの追加
+  php:
+    build: ./docker
+    volumes:
+      - ./app:/var/www/html
+    environment:
+      - TZ=Asia/Tokyo
+    extra_hosts:
+      - localhost:host-gateway
+    ports:
+      - 80:80
+    container_name: app-restaurant-php8.3
