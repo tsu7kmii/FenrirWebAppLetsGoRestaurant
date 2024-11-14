@@ -103,7 +103,7 @@ $shops_to_display = array_slice($shops, $start - 1, $count);
         <hr>
         <br><br><br>
         <!-- ランダムで店を決定する -->
-        <h2 class="display-4">きまぐれ店舗セレクション</h2>
+        <h2 class="display-4">きまぐれセレクション</h2>
         <?php 
         // ランダムな数値を生成
         $random_number = rand(0, $total_count - 1);
