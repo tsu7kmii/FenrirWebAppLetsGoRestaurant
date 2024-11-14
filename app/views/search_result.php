@@ -9,14 +9,17 @@ if (!isset($_SESSION['result_data'])){
 $result_data = $_SESSION['result_data'];
 
 // ページング用の変数を設定
-$count = 10; // 1ページあたりの表示件数
+$count = 5; // 1ページあたりの表示件数
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $start = ($page - 1) * $count + 1;
 
 // 検索結果から店舗情報を取得
 $shops = $result_data['results']['shop'] ?? [];
-$total_count = $result_data['results']['results_available'] ?? 0; // 総店舗数
+$total_count = count($result_data['results']['shop']); // 総店舗数
 $total_pages = ceil($total_count / $count); // 総ページ数
+
+// 現在のページに表示する店舗情報を取得
+$shops_to_display = array_slice($shops, $start - 1, $count);
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +52,7 @@ $total_pages = ceil($total_count / $count); // 総ページ数
                 </tr>
             </thead>
             <tbody class="table-group-divider">
-                <?php foreach ($shops as $shop): ?>
+                <?php foreach ($shops_to_display as $shop): ?>
                     <tr>
                         <td>
                             <!-- 店舗名の表示 -->
@@ -96,6 +99,22 @@ $total_pages = ceil($total_count / $count); // 総ページ数
                 <a href="?page=<?php echo $page + 1; ?>">次のページ</a>
             <?php endif; ?>
         </div>
+
+        <hr>
+        <br><br><br>
+        <!-- ランダムで店を決定する -->
+        <h2 class="display-4">きまぐれ店舗セレクション</h2>
+        <?php 
+        // ランダムな数値を生成
+        $random_number = rand(0, $total_count - 1);
+        ?>
+        <!-- 店舗詳細ページ遷移 -->
+        <form action="shop_info.php" method="post">
+            <input type="hidden" name="shop_info" value="<?php echo htmlspecialchars(json_encode($shops[$random_number]), ENT_QUOTES, 'UTF-8'); ?>">
+            <input type="hidden" name="current_page" value="<?php echo $page; ?>">
+            <button type="submit" class="btn btn-outline-success">きまぐれぼたん</button>
+        </form>
+
 
     <?php endif; ?>
 
