@@ -17,7 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     $latitude = $_POST['latitude'];
     $longitude = $_POST['longitude'];
 
-
     // Hot Pepper APIのエンドポイント
     $url = "https://webservice.recruit.co.jp/hotpepper/gourmet/v1/";
     $params = [
@@ -26,6 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         'lng' => $longitude,
         'range' => $radius,
         'format' => 'json',
+        'count' => 100,
     ];
 
     // パラメータをクエリ文字列に変換
