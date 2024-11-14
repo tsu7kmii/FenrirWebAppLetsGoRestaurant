@@ -24,23 +24,28 @@ $total_pages = ceil($total_count / $count); // 総ページ数
 <?php $title = "Let's Go Restaurant - 検索画面"; ?>
 
 <?php include_once(__DIR__.'/template/header.php'); ?>
-<body>
+<body class="p-3 mb-2 bg-body-secondary">
     <?php include_once(__DIR__.'/template/nav.html'); ?>
     <br>
     <a href="./search.php">検索ページに戻る</a>
-    <h1>Let's Go Restaurant</h1>
+    <hr>
+    <h1 class="display-2">
+        <span style="color: red;">L</span>et's <span style="color: red;">G</span>o <span style="color: red;">R</span>estaurant
+    </h1>
+    <hr><hr>
 
-    <h2>検索結果</h2>
+    <h2 class="display-4">検索結果</h2>
 
-    <table border="1" cellpadding="8">
+    <table class="table table-secondary table-striped" style="width: auto;">
         <thead>
             <tr>
                 <th>店舗名</th>
+                <th>ジャンル</th>
                 <th>アクセス</th>
                 <th>サムネイル</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="table-group-divider">
             <?php if (!empty($shops)): ?>
                 <?php foreach ($shops as $shop): ?>
                     <tr>
@@ -53,8 +58,12 @@ $total_pages = ceil($total_count / $count); // 総ページ数
                             <form action="shop_info.php" method="post">
                                 <input type="hidden" name="shop_info" value="<?php echo htmlspecialchars(json_encode($shop), ENT_QUOTES, 'UTF-8'); ?>">
                                 <input type="hidden" name="current_page" value="<?php echo $page; ?>">
-                                <button type="submit">詳細を見る</button>
+                                <button type="submit" class="btn btn-outline-primary">詳細を見る</button>
                             </form>
+                        </td>
+                        <td>
+                            <!-- ジャンルの表示 -->
+                            <?php echo htmlspecialchars($shop['genre']['name'], ENT_QUOTES, 'UTF-8'); ?>
                         </td>
                         <td>
                             <!-- アクセスの表示 -->
