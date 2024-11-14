@@ -47,21 +47,23 @@ $shop_data = json_decode($shop_info, true);
 
     <br><br>
 
-    <!-- 店舗へのリンク -->
     <h3 class="display-5">各種リンク</h3>
-    <div>
-        <a href="<?php echo htmlspecialchars($shop_data['urls']['pc'], ENT_QUOTES, 'UTF-8'); ?>" target="_blank">店舗ページ</a>
-    </div>
+    <ul class="list-group" style="width:auto;">
+         <!-- 店舗へのリンク -->
+        <li class="list-group-item list-group-item-secondary">
+            <a href="<?php echo htmlspecialchars($shop_data['urls']['pc'], ENT_QUOTES, 'UTF-8'); ?>" target="_blank">店舗ページ</a>
+        </li>
 
-    <!-- クーポンリンク -->
-    <div>
-        <a href="<?php echo htmlspecialchars($shop_data['coupon_urls']['pc'], ENT_QUOTES, 'UTF-8'); ?>" target="_blank">クーポンを見る</a>
-    </div>
+        <!-- クーポンリンク -->
+        <li class="list-group-item list-group-item-secondary">
+            <a href="<?php echo htmlspecialchars($shop_data['coupon_urls']['pc'], ENT_QUOTES, 'UTF-8'); ?>" target="_blank">クーポンを見る</a>
+        </li>
 
-    <!-- Googleマップの埋め込みリンク -->
-    <div>
-        <a href="https://www.google.com/maps/search/?api=1&query=<?php echo urlencode($shop_data['address']); ?>" target="_blank">Googleマップで表示</a>
-    </div>
+        <!-- Googleマップの埋め込みリンク -->
+        <li class="list-group-item list-group-item-secondary">
+            <a href="https://www.google.com/maps/search/?api=1&query=<?php echo urlencode($shop_data['address']); ?>" target="_blank">Googleマップで表示</a>
+        </li>
+    </ul>
 
 
     <?php include_once(__DIR__ .'/template/footer.html'); ?>
