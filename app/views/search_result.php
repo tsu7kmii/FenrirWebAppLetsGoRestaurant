@@ -52,6 +52,7 @@ $total_pages = ceil($total_count / $count); // 総ページ数
                             <!-- 同セル内に詳細ページ遷移用ボタン設置 -->
                             <form action="shop_info.php" method="post">
                                 <input type="hidden" name="shop_info" value="<?php echo htmlspecialchars(json_encode($shop), ENT_QUOTES, 'UTF-8'); ?>">
+                                <input type="hidden" name="current_page" value="<?php echo $page; ?>">
                                 <button type="submit">詳細を見る</button>
                             </form>
                         </td>
