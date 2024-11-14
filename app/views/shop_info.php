@@ -20,7 +20,6 @@ $shop_data = json_decode($shop_info, true);
 <body class="p-3 mb-2 bg-body-secondary">
     <?php include_once(__DIR__.'/template/nav.html'); ?>
     <br>
-    <a href="./search.php">検索ページに戻る</a><br>
     <a href="./search_result.php?page=<?php echo htmlspecialchars($current_page, ENT_QUOTES, 'UTF-8'); ?>">一覧ページに戻る</a>
 
     <hr>

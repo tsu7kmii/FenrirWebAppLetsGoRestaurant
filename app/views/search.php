@@ -3,7 +3,6 @@
 <?php $title = "Let's Go Restaurant - 検索画面"; ?>
 <?php include_once(__DIR__.'/template/header.php'); ?>
 <body class="p-3 mb-2 bg-body-secondary">
-    <?php include_once(__DIR__.'/template/nav.html'); ?>
     <script src="./js/search.js"></script>
     <h1 class="display-2">
         <span style="color: red;">L</span>et's <span style="color: red;">G</span>o <span style="color: red;">R</span>estaurant
