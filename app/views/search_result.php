@@ -33,10 +33,11 @@ $total_pages = ceil($total_count / $count); // 総ページ数
     <hr><hr>
 
     <h2 class="display-4">検索結果</h2>
+    <br>
     <?php if (empty($shops)): ?>
-        <tr>
-            <td colspan="3">レストラン情報が見つかりませんでした。</td>
-        </tr>
+
+        <h3>レストラン情報が見つかりませんでした。</h3>
+        <a href="./search.php">検索しなおす</a>
     <?php else: ?>
         <table class="table table-secondary table-striped" style="width: auto;">
             <thead>
