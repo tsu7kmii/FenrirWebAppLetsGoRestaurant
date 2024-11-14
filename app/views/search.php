@@ -12,12 +12,11 @@
         <label for="radius">検索範囲を選択してください(半径):</label>
         <select id="radius" name="radius">
             <option value="" disabled selected>設定されていません</option>
-            <option value="500">0.5 km</option>
-            <option value="1">1 km</option>
-            <option value="2">2 km</option>
-            <option value="3">3 km</option>
-            <option value="4">4 km</option>
-            <option value="5">5 km</option>
+            <option value="1">300 m以内</option>
+            <option value="2">500 m</option>
+            <option value="3">1000 m</option>
+            <option value="4">2000 m</option>
+            <option value="5">3000 m</option>
         </select>
         <br><br>
 
