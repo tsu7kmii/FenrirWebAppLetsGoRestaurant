@@ -9,7 +9,7 @@ if (!isset($_SESSION['result_data'])){
 $result_data = $_SESSION['result_data'];
 
 // ページング用の変数を設定
-$count = 5; // 1ページあたりの表示件数
+$count = 10; // 1ページあたりの表示件数
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $start = ($page - 1) * $count + 1;
 
@@ -36,6 +36,7 @@ $shops_to_display = array_slice($shops, $start - 1, $count);
     <hr><hr>
 
     <h2 class="display-4">検索結果</h2>
+    <p>総ヒット数: <?php echo htmlspecialchars($total_count, ENT_QUOTES, 'UTF-8'); ?>件</p>
     <br>
     <?php if (empty($shops)): ?>
 
